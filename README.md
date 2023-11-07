@@ -17,6 +17,13 @@ Please refer the http status codes.
 https://developer.mozilla.org/ja/docs/Web/HTTP/Status
 
 
+## Deploying On OpenShift
+
+You can deploy this on your OpenShift. After logging on your OpenShift environment by oc command, you can execute the following:
+```shell script
+./mvnw install -Dquarkus.kubernetes.deploy=true
+```
+
 
 ## Running the application in dev mode
 
