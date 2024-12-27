@@ -23,6 +23,29 @@ You can deploy this on your OpenShift. After logging on your OpenShift environme
 ```shell script
 ./mvnw install -Dquarkus.kubernetes.deploy=true
 ```
+Then, you can expose service and check working by curl command:
+```shell script
+oc expose service/status-with-quarkus
+
+curl -v http://status-with-quarkus-mystatus.apps-crc.testing/status/404
+
+* Host status-with-quarkus-mystatus.apps-crc.testing:80 was resolved.
+* IPv6: (none)
+* IPv4: 192.168.130.11
+*   Trying 192.168.130.11:80...
+* Connected to status-with-quarkus-mystatus.apps-crc.testing (192.168.130.11) port 80
+> GET /status/404 HTTP/1.1
+> Host: status-with-quarkus-mystatus.apps-crc.testing
+> User-Agent: curl/8.9.1
+> Accept: */*
+> 
+* Request completely sent off
+< HTTP/1.1 404 Not Found
+< content-length: 0
+< set-cookie: bb962fcc4b7a348ec62d0c335cf6ba63=22e3473461dc8e106aa8e7e0e85800fe; path=/; HttpOnly
+< 
+* Connection #0 to host status-with-quarkus-mystatus.apps-crc.testing left intact
+```
 
 
 ## Running the application in dev mode
